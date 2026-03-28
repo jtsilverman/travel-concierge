@@ -51,6 +51,9 @@ async def search_flights(origin: str, destination: str, departure_date: str, ret
     }
     if return_date:
         params["return_date"] = return_date
+        params["type"] = "1"  # Round trip
+    else:
+        params["type"] = "2"  # One-way
 
     url = f"https://serpapi.com/search.json?{urllib.parse.urlencode(params)}"
     try:
