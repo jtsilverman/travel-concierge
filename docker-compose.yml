@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SERPAPI_API_KEY=${SERPAPI_API_KEY}
+      - GOOGLE_PLACES_API_KEY=${GOOGLE_PLACES_API_KEY}
+      - DB_PATH=/data/travel_concierge.db
+    volumes:
+      - travel-data:/data
+    restart: unless-stopped
+
+volumes:
+  travel-data:
